@@ -64,7 +64,7 @@
         {
           id: "CompoundTable", 
           alias: "CompoundTable",
-          desc: tableau.connectionData,
+          description: tableau.connectionData,
           columns: cols
         };
 
@@ -74,7 +74,7 @@
     // Download the data
     myConnector.getData = function(table, doneCallback) {
         
-      var apiCall = 'https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/'+encodeURIComponent(table.tableInfo.desc)+'/json?record_type=3d';  
+      var apiCall = 'https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/'+encodeURIComponent(tableau.connectionData)+'/json?record_type=3d';  
 
       $.getJSON(apiCall, function(data) {
 
@@ -97,7 +97,7 @@
                           'path_id':1,
                           'bond_id':i,
                           'bond_order':bonds.order[i],
-                          'CompoundName':table.tableInfo.desc,
+                          'CompoundName':tableau.connectionData,
                           'AtomicNumber':elements[bonds.aid1[i]-1],
                           'degrees':deg,
                           'radians':deg/180 * Math.PI
@@ -110,7 +110,7 @@
                           'path_id':2,
                           'bond_id':i,
                           'bond_order':bonds.order[i],
-                          'CompoundName':table.tableInfo.desc,
+                          'CompoundName':tableau.connectionData,
                           'AtomicNumber':elements[bonds.aid2[i]-1],
                           'degrees':deg,
                           'radians':deg/180 * Math.PI
